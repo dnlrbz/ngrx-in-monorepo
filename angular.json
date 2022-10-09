@@ -1,8 +1,8 @@
 {
   "version": 2,
   "projects": {
-    "first-project": "apps/first-project",
-    "second-project": "apps/second-project",
+    "product-rent-agency": "apps/product-rent-agency",
+    "product-shop": "apps/product-shop",
     "shared-store": "libs/shared-store"
   }
 }

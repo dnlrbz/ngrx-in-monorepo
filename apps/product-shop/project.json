@@ -1,24 +1,24 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/first-project/src",
+  "sourceRoot": "apps/product-shop/src",
   "prefix": "app",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/first-project",
-        "index": "apps/first-project/src/index.html",
-        "main": "apps/first-project/src/main.ts",
-        "polyfills": "apps/first-project/src/polyfills.ts",
-        "tsConfig": "apps/first-project/tsconfig.app.json",
+        "outputPath": "dist/apps/product-shop",
+        "index": "apps/product-shop/src/index.html",
+        "main": "apps/product-shop/src/main.ts",
+        "polyfills": "apps/product-shop/src/polyfills.ts",
+        "tsConfig": "apps/product-shop/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/first-project/src/favicon.ico",
-          "apps/first-project/src/assets"
+          "apps/product-shop/src/favicon.ico",
+          "apps/product-shop/src/assets"
         ],
-        "styles": ["apps/first-project/src/styles.scss"],
+        "styles": ["apps/product-shop/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -37,8 +37,8 @@
           ],
           "fileReplacements": [
             {
-              "replace": "apps/first-project/src/environments/environment.ts",
-              "with": "apps/first-project/src/environments/environment.prod.ts"
+              "replace": "apps/product-shop/src/environments/environment.ts",
+              "with": "apps/product-shop/src/environments/environment.prod.ts"
             }
           ],
           "outputHashing": "all"
@@ -58,10 +58,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "first-project:build:production"
+          "browserTarget": "product-shop:build:production"
         },
         "development": {
-          "browserTarget": "first-project:build:development"
+          "browserTarget": "product-shop:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -69,23 +69,23 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "first-project:build"
+        "browserTarget": "product-shop:build"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "apps/first-project/**/*.ts",
-          "apps/first-project/**/*.html"
+          "apps/product-shop/**/*.ts",
+          "apps/product-shop/**/*.html"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/first-project"],
+      "outputs": ["coverage/apps/product-shop"],
       "options": {
-        "jestConfig": "apps/first-project/jest.config.ts",
+        "jestConfig": "apps/product-shop/jest.config.ts",
         "passWithNoTests": true
       }
     }

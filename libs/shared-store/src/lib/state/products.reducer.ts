@@ -1,15 +1,14 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { createReducer, on, Action } from '@ngrx/store';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import { Action, createReducer, on } from '@ngrx/store';
 
-import * as ProductsActions from './products.actions';
+import { fetchProducts, fetchProductsFailure, fetchProductsSuccess } from './products.actions';
 import { ProductsEntity } from './products.models';
 
 export const PRODUCTS_FEATURE_KEY = 'products';
 
 export interface ProductsState extends EntityState<ProductsEntity> {
   selectedId?: string | number; // which Products record has been selected
-  loaded: boolean; // has the Products list been loaded
-  error?: string | null; // last known error (if any)
+  isLoading: boolean;
 }
 
 export interface ProductsPartialState {
@@ -21,24 +20,16 @@ export const productsAdapter: EntityAdapter<ProductsEntity> =
 
 export const initialProductsState: ProductsState =
   productsAdapter.getInitialState({
-    // set initial required properties
-    loaded: false,
+    isLoading: false,
   });
 
 const reducer = createReducer(
   initialProductsState,
-  on(ProductsActions.initProducts, (state) => ({
-    ...state,
-    loaded: false,
-    error: null,
-  })),
-  on(ProductsActions.loadProductsSuccess, (state, { products }) =>
-    productsAdapter.setAll(products, { ...state, loaded: true })
+  on(fetchProducts, (state) => ({...state, isLoading: true})),
+  on(fetchProductsSuccess, (state, { products }) =>
+    productsAdapter.setAll(products, { ...state, isLoading: false })
   ),
-  on(ProductsActions.loadProductsFailure, (state, { error }) => ({
-    ...state,
-    error,
-  }))
+  on(fetchProductsFailure, (state) => ({ ...state, isLoading: false })),
 );
 
 export function productsReducer(

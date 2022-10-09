@@ -1,24 +1,24 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/second-project/src",
+  "sourceRoot": "apps/product-rent-agency/src",
   "prefix": "app",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/second-project",
-        "index": "apps/second-project/src/index.html",
-        "main": "apps/second-project/src/main.ts",
-        "polyfills": "apps/second-project/src/polyfills.ts",
-        "tsConfig": "apps/second-project/tsconfig.app.json",
+        "outputPath": "dist/apps/product-rent-agency",
+        "index": "apps/product-rent-agency/src/index.html",
+        "main": "apps/product-rent-agency/src/main.ts",
+        "polyfills": "apps/product-rent-agency/src/polyfills.ts",
+        "tsConfig": "apps/product-rent-agency/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/second-project/src/favicon.ico",
-          "apps/second-project/src/assets"
+          "apps/product-rent-agency/src/favicon.ico",
+          "apps/product-rent-agency/src/assets"
         ],
-        "styles": ["apps/second-project/src/styles.scss"],
+        "styles": ["apps/product-rent-agency/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -37,8 +37,8 @@
           ],
           "fileReplacements": [
             {
-              "replace": "apps/second-project/src/environments/environment.ts",
-              "with": "apps/second-project/src/environments/environment.prod.ts"
+              "replace": "apps/product-rent-agency/src/environments/environment.ts",
+              "with": "apps/product-rent-agency/src/environments/environment.prod.ts"
             }
           ],
           "outputHashing": "all"
@@ -58,10 +58,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "second-project:build:production"
+          "browserTarget": "product-rent-agency:build:production"
         },
         "development": {
-          "browserTarget": "second-project:build:development"
+          "browserTarget": "product-rent-agency:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -69,23 +69,23 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "second-project:build"
+        "browserTarget": "product-rent-agency:build"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "apps/second-project/**/*.ts",
-          "apps/second-project/**/*.html"
+          "apps/product-rent-agency/**/*.ts",
+          "apps/product-rent-agency/**/*.html"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/second-project"],
+      "outputs": ["coverage/apps/product-rent-agency"],
       "options": {
-        "jestConfig": "apps/second-project/jest.config.ts",
+        "jestConfig": "apps/product-rent-agency/jest.config.ts",
         "passWithNoTests": true
       }
     }

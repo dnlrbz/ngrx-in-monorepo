@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "nx",
-    "start:first-project": "nx serve --project first-project",
-    "start:second-project": "nx serve --project second-project",
-    "build:first-project": "nx build --project first-project",
-    "build:second-project": "nx build --project second-project",
-    "test:first-project": "nx test --no-watch --project first-project --affected",
-    "test:second-project": "nx test --no-watch --project second-project --affected",
+    "start:product-rent-agency": "nx serve --project product-rent-agency",
+    "start:product-shop": "nx serve --project product-shop",
+    "build:product-rent-agency": "nx build --project product-rent-agency",
+    "build:product-shop": "nx build --project product-shop",
+    "test:product-rent-agency": "nx test --no-watch --project product-rent-agency --affected",
+    "test:product-shop": "nx test --no-watch --project product-shop --affected",
     "test:shared-store": "nx test shared-store",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main"
   },
