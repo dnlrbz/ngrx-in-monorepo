@@ -1,1 +1,28 @@
-<router-outlet></router-outlet>
+<div class="wrapper">
+  <h1>Products</h1>
+  <p>Revenue: {{shopRevenue | async | currency}}</p>
+  <button mat-raised-button type="button" (click)="fetchAllProducts()">Load all products</button>
+
+  <div class="spinner">
+    <mat-spinner *ngIf="isLoading$ | async;"></mat-spinner>
+  </div>
+
+  <ng-container *ngIf="!(isLoading$ | async)">
+    <ng-container *ngIf="products$ | async as products">
+      <mat-card *ngFor="let product of products; let i = index">
+        <mat-card-content>
+          <p>Product name: {{product.name}}</p>
+          <p>Product price: {{product?.price | currency}}</p>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Sell product to" type="text"
+                   [formControl]="$any(soldTo.at(i))">
+          </mat-form-field>
+          <button mat-raised-button [disabled]="!!product?.soldTo"
+                  type="button" class="product-button" (click)="sellProduct(product, i)">Sell</button>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </ng-container>
+</div>
+

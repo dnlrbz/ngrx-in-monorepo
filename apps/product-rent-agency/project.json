@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/product-rent-agency",
         "index": "apps/product-rent-agency/src/index.html",
@@ -18,7 +20,10 @@
           "apps/product-rent-agency/src/favicon.ico",
           "apps/product-rent-agency/src/assets"
         ],
-        "styles": ["apps/product-rent-agency/src/styles.scss"],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/product-rent-agency/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -83,7 +88,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/product-rent-agency"],
+      "outputs": [
+        "coverage/apps/product-rent-agency"
+      ],
       "options": {
         "jestConfig": "apps/product-rent-agency/jest.config.ts",
         "passWithNoTests": true

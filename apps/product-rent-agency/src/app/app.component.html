@@ -1,1 +1,29 @@
-<router-outlet></router-outlet>
+<div class="wrapper">
+  <h1>Products</h1>
+  <p>Rented items: {{rentedAmount | async}}</p>
+  <button mat-raised-button type="button" (click)="fetchAllProducts()">Load all products</button>
+
+  <div class="spinner">
+    <mat-spinner *ngIf="isLoading$ | async;"></mat-spinner>
+  </div>
+
+  <ng-container *ngIf="!(isLoading$ | async)">
+    <ng-container *ngIf="products$ | async as products">
+      <mat-card *ngFor="let product of products; let i = index">
+        <mat-card-header>
+          Product name: {{product.name}}
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Rented to" type="text"
+                   [formControl]="$any(rentToNames.at(i))">
+          </mat-form-field>
+          <button mat-raised-button [disabled]="!!product?.rentedTo"
+                  type="button" class="product-button" (click)="rentProduct(product, i)">Rent</button>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </ng-container>
+</div>
+

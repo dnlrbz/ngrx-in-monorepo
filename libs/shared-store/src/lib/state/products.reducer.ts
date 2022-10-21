@@ -1,5 +1,5 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { Action, createReducer, on } from '@ngrx/store';
+import { ActionCreator, on, ReducerTypes } from '@ngrx/store';
 
 import { fetchProducts, fetchProductsFailure, fetchProductsSuccess } from './products.actions';
 import { ProductsEntity } from './products.models';
@@ -11,30 +11,14 @@ export interface ProductsState extends EntityState<ProductsEntity> {
   isLoading: boolean;
 }
 
-export interface ProductsPartialState {
-  readonly [PRODUCTS_FEATURE_KEY]: ProductsState;
-}
-
 export const productsAdapter: EntityAdapter<ProductsEntity> =
   createEntityAdapter<ProductsEntity>();
 
-export const initialProductsState: ProductsState =
-  productsAdapter.getInitialState({
-    isLoading: false,
-  });
 
-const reducer = createReducer(
-  initialProductsState,
+export const productReducers: ReducerTypes<ProductsState, ActionCreator[]>[] = [
   on(fetchProducts, (state) => ({...state, isLoading: true})),
-  on(fetchProductsSuccess, (state, { products }) =>
-    productsAdapter.setAll(products, { ...state, isLoading: false })
+  on(fetchProductsSuccess, (state, {products}) =>
+    productsAdapter.setAll(products, {...state, isLoading: false})
   ),
-  on(fetchProductsFailure, (state) => ({ ...state, isLoading: false })),
-);
-
-export function productsReducer(
-  state: ProductsState | undefined,
-  action: Action
-) {
-  return reducer(state, action);
-}
+  on(fetchProductsFailure, (state) => ({...state, isLoading: false})),
+];

@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/product-shop",
         "index": "apps/product-shop/src/index.html",
@@ -18,7 +20,10 @@
           "apps/product-shop/src/favicon.ico",
           "apps/product-shop/src/assets"
         ],
-        "styles": ["apps/product-shop/src/styles.scss"],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/product-shop/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -83,7 +88,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/product-shop"],
+      "outputs": [
+        "coverage/apps/product-shop"
+      ],
       "options": {
         "jestConfig": "apps/product-shop/jest.config.ts",
         "passWithNoTests": true
