@@ -11,12 +11,12 @@ import { MatButtonModule } from "@angular/material/button";
 import { ReactiveFormsModule } from "@angular/forms";
 import { ProductShopStoreModule } from "./state/product-shop-store.module";
 import { StoreModule } from "@ngrx/store";
-import { environment } from "../../../product-rent-agency/src/environments/environment";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { HttpClientModule } from "@angular/common/http";
 import { MatInputModule } from "@angular/material/input";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CommonModule } from "@angular/common";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [AppComponent],
